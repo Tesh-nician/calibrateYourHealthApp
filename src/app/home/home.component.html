@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calibrate Your Health</title>
+    <!-- Add Angular specific tags for routerLink to work -->
+    <base href="/">
+</head>
+<body>
+    <app-root>
+        <div class="container">
+            <h1>Welcome to Calibrate Your Health</h1>
+            <p>Please select your registration or login type:</p>
+            <ul>
+                <li><a routerLink="/admin-register">Admin Registration</a></li>
+                <li><a routerLink="/doctor-register">Doctor Registration</a></li>
+                <li><a routerLink="/patient-register">Patient Registration</a></li>
+                <li><a routerLink="/admin-login">Admin Login</a></li>
+                <li><a routerLink="/doctor-login">Doctor Login</a></li>
+                <li><a routerLink="/patient-login">Patient Login</a></li>
+            </ul>
+        </div>
+    </app-root>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>
