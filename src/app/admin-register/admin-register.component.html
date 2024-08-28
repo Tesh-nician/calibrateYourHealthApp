@@ -20,8 +20,8 @@
                 <input type="password" id="password" name="password" [(ngModel)]="admin.password" required>
             </div>
             <div>
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" [(ngModel)]="admin.confirm-password" required>
+                <label for="confirmpassword">Confirm Password:</label>
+                <input type="password" id="confirmpassword" name="confirmpassword" [(ngModel)]="admin.confirmPassword" required>
             </div>
             <div *ngIf="passwordMisMatch" style="color: red;">
                 The Passwords do not match, please pay more attention and try again. 
