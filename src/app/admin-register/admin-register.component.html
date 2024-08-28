@@ -10,18 +10,22 @@
     <p>admin-register works!</p>
     <div class="container">
         <h2>Admin Registration</h2>
-        <form>
+        <form (ngSubmit)="registerAdmin()" #adminForm="ngForm">
             <div>
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="username" name="username" [(ngModel)]="admin.username" required>
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" [(ngModel)]="admin.password" required>
             </div>
             <div>
                 <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password">
+                <input type="password" id="confirm-password" name="confirm-password" [(ngModel)]="admin.confirm-password" required>
+            </div>
+            <div *ngIf="passwordMisMatch" style="color: red;">
+                The Passwords do not match, please pay more attention and try again. 
+
             </div>
             <button type="submit">Register</button>
         </form>

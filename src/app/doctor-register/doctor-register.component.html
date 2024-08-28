@@ -1,1 +1,43 @@
-<p>doctor-register works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <p>doctor-register works!</p>
+    <div class="container">
+        <h2>Doctor Registration</h2>
+        <form (ngSubmit)="registerDoctor()" #doctorForm="ngForm">
+            <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" [(ngModel)]="doctor.firstName" required>
+            </div>
+            <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" [(ngModel)]="doctor.lastName" required>
+            </div>
+            <div>
+                <label for="rizivNumber">Riziv Number:</label>
+                <input type="text" id="rizivNumber" name="rizivNumber" [(ngModel)]="doctor.rizivNumber" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" [(ngModel)]="doctor.password" required>
+            </div>
+            <div>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="doctor.confirmPassword" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+</html>
