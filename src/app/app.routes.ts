@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { DoctorRegisterComponent } from './doctor-register/doctor-register.component';
@@ -22,11 +22,10 @@ export const routes: Routes = [
     {path: 'admin-dashboard', component: AdminDashboardComponent},
     {path: 'doctor-dashboard', component: DoctorDashboardComponent},
     {path: 'patient-dashboard', component: PatientDashboardComponent}
+];
 
-
-    @NgModule({
+@NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
-    })
-    export class AppRoutingModule { }
-];
+})
+export class AppRoutingModule { }
