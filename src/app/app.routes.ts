@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { DoctorRegisterComponent } from './doctor-register/doctor-register.component';
@@ -12,7 +14,8 @@ import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.co
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 
 export const routes: Routes = [
-    {path: '', component: HomeComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full'},
+    {path: 'home', component: HomeComponent},
     {path: 'admin-register', component: AdminRegisterComponent},
     {path: 'doctor-register', component: DoctorRegisterComponent},
     {path: 'patient-register', component: PatientRegisterComponent},
@@ -25,7 +28,15 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+
+    declarations: [
+        
+    ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(routes)],
+        providers: [],
+        
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
