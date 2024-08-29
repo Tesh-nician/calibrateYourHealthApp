@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-doctor-register',
   standalone: true,
-  imports: [FormsModule,
-            CommonModule],
-
+  imports: [FormsModule, 
+            CommonModule, 
+            RouterModule, 
+            HttpClientModule],
   templateUrl: './doctor-register.component.html',
-  styleUrl: './doctor-register.component.css'
+  styleUrls: ['./doctor-register.component.css']
 })
 export class DoctorRegisterComponent {
   doctor = {
@@ -34,6 +38,5 @@ export class DoctorRegisterComponent {
         // Handle the error, display an error message, or redirect to an error page
       }
     );
-    
   }
 }

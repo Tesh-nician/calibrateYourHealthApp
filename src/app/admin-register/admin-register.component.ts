@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-admin-register',
   standalone: true,
   imports: [FormsModule,
-            CommonModule],
+            CommonModule,
+            RouterModule,
+            HttpClientModule],
 
   templateUrl: './admin-register.component.html',
   styleUrls: ['./admin-register.component.css']
