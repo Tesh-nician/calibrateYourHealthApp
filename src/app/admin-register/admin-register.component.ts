@@ -39,7 +39,7 @@ registerAdmin() {
 
 
   
-    this.http.post<any>('/api/admins/registerAdmin', this.admin).subscribe(
+    this.http.post<any>('http://localhost:8080/api/admins/registerAdmin', this.admin).subscribe(
       () => {
         console.log('Admin registered successfully');
         // Add any additional logic or redirect to a success page
