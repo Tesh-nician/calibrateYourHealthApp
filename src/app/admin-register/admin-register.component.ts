@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';
 })
 export class AdminRegisterComponent {
   admin = {
-    username: '',
+    userName: '',
     password: '',
     confirmPassword: ''
   };
@@ -36,6 +36,11 @@ registerAdmin() {
 
   this.passwordMisMatch = false;
 
+
+  // Log the admin object to check its values
+  console.log('Admin object:', this.admin);
+
+  
 
 
   
