@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
             CommonModule, 
             RouterModule, 
             HttpClientModule],
+
   templateUrl: './doctor-register.component.html',
   styleUrls: ['./doctor-register.component.css']
 })
@@ -25,18 +26,43 @@ export class DoctorRegisterComponent {
     confirmPassword: ''
   };
 
+  passwordMisMatch = false;
+
+  
   constructor(private http: HttpClient) {}
 
   registerDoctor() {
-    this.http.post('/api/doctors/registerDoctor', this.doctor).subscribe(
-      () => {
-        console.log('Doctor registered successfully');
-        // Add any additional logic or redirect to a success page
-      },
-      (error) => {
-        console.error('Failed to register doctor:', error);
-        // Handle the error, display an error message, or redirect to an error page
-      }
-    );
+    if (this.doctor.password !== this.doctor.confirmPassword) {
+      this.passwordMisMatch = true;
+      return;
+    }
+  
+    this.passwordMisMatch = false;
+  
+  
+    // Log the admin object to check its values
+    console.log('Doctor object:', this.doctor);
+  
+    
+  
+  
+    
+      this.http.post<any>('http://localhost:8080/api/doctors/registerDoctor', this.doctor).subscribe(
+        (response) => {
+          console.log('Doctor registered successfully', response);
+          // Add any additional logic or redirect to a success page
+          //Return to the home page
+          window.location.href = '/home';
+        },
+        (error) => {
+          console.error('Failed to register doctor:', error);
+          // Handle the error, display an error message, or redirect to an error page
+          //return to the home page
+          window.location.href = '/home';
+          
+        }
+      );
+    }
   }
-}
+
+

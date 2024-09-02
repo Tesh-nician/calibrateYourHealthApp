@@ -28,13 +28,13 @@ export class AdminRegisterComponent {
 
   constructor(private http: HttpClient) {}
 
-registerAdmin() {
-  if (this.admin.password !== this.admin.confirmPassword) {
+  registerAdmin() {
+    if (this.admin.password !== this.admin.confirmPassword) {
     this.passwordMisMatch = true;
     return;
-  }
+    }
 
-  this.passwordMisMatch = false;
+    this.passwordMisMatch = false;
 
 
   // Log the admin object to check its values
