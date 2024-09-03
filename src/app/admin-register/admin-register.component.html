@@ -13,7 +13,7 @@
         <form (ngSubmit)="registerAdmin()" #adminForm="ngForm">
             <div>
                 <label for="userName">Username:</label>
-                <input type="text" id="userName" name="userName" [(ngModel)]="admin.userName" required>
+                <input type="text" id="username" name="username" [(ngModel)]="admin.username" required>
             </div>
             <div>
                 <label for="password">Password:</label>
@@ -25,7 +25,10 @@
             </div>
             <div *ngIf="passwordMisMatch" style="color: red;">
                 The Passwords do not match, please pay more attention and try again. 
+            </div>
 
+            <div *ngIf="errorMessage" class="error-message">
+                    {{ errorMessage }}    
             </div>
             <button type="submit">Register</button>
         </form>
