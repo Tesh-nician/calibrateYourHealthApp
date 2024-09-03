@@ -62,7 +62,7 @@ console.log('Params:', params);
           console.log('Doctor registered successfully', response);
           // Add any additional logic or redirect to a success page
           //Return to the home page
-          window.location.href = '/home';
+          window.location.href = '/doctor-login';
         },
         (error) => {
           console.error('Failed to register doctor:', error);
