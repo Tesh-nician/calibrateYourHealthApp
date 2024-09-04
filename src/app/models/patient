@@ -1,0 +1,16 @@
+import { BloodPressureMeasurement } from '../models/bloodPressureComment';
+import { WeightMeasurement } from '../models/weightMeasurement';
+import { NeuroMeasurement } from '..models/neuroMeasurement';
+
+export interface Patient {
+  id: number;
+  firstName: string;
+  lastName: string;
+  dateOfBirth: string; // ISO date string
+  username: string;
+  password: string;
+  confirmPassword: string;
+  myBloodPressureMeasurements?: BloodPressureMeasurement[];
+  myWeightMeasurements?: WeightMeasurement[];
+  myNeuroMeasurements?: NeuroMeasurement[];
+}

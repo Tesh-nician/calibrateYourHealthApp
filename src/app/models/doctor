@@ -1,0 +1,9 @@
+export interface Doctor {
+  doctorID: number;
+  firstName: string;
+  lastName: string;
+  rizivNumber: number;
+  password: string;
+  username: string;
+  confirmPassword: string;
+}

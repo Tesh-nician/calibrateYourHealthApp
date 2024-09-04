@@ -1,0 +1,9 @@
+
+import { Patient } from '../models/patient';
+export interface NeuroMeasurement {
+  neuroID: number;
+  neuroMeasurement: number;
+  neuroComment?: string;
+  date: string; // ISO date string
+  patient: Patient;
+}

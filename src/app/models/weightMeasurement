@@ -1,0 +1,12 @@
+
+//import patient interface from the models class
+import { Patient } from '../models/patient';
+
+export interface WeightMeasurement {
+  weightID: number;
+  weight: number;
+  weightComment?: string;
+  date: string; // ISO date string
+  patient: Patient;
+ 
+}

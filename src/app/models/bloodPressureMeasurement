@@ -1,0 +1,11 @@
+import { Patient } from "../models/patient";
+
+export interface BloodPressureMeasurement {
+  bloodPressureID: number;
+  systolicPressure: number;
+  diastolicPressure: number;
+  pulse: number;
+  date: string; // ISO date string
+  bloodPressureComment?: string;
+  patient: Patient;
+}
