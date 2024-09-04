@@ -1,6 +1,6 @@
-import { WeightMeasurement } from './weightMeasurement;
-import { BloodPressureMeasurement } from './bloodPressureMeasurement';
-import { NeuroMeasurement } from './neuroMeasurement';
+import { WeightMeasurement } from '../models/WeightMeasurement';
+import { BloodPressureMeasurement } from '../models/BloodPressureMeasurement';
+import { NeuroMeasurement } from '../models/NeuroMeasurement';
 
 export class Patient {
   id: number;
@@ -37,7 +37,4 @@ export class Patient {
     this.myWeightMeasurements = myWeightMeasurements;
     this.myNeuroMeasurements = myNeuroMeasurements;
   }
-
-  
-
 }
