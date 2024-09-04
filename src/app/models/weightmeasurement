@@ -1,6 +1,6 @@
 
 //import patient from the models class
-import { Patient } from './patient';
+import { Patient } from '../models/patient';
 
 
 export class  WeightMeasurement {

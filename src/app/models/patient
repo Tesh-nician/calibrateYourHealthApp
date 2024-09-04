@@ -1,6 +1,6 @@
-import { WeightMeasurement } from '../models/WeightMeasurement';
-import { BloodPressureMeasurement } from '../models/BloodPressureMeasurement';
-import { NeuroMeasurement } from '../models/NeuroMeasurement';
+import { WeightMeasurement } from '../models/weightmeasurements';
+import { BloodPressureMeasurement } from '../models/bloodpressuremeasurement';
+import { NeuroMeasurement } from '../models/neuromeasurement';
 
 export class Patient {
   id: number;
