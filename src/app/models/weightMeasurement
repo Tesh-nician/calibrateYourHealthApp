@@ -1,12 +1,28 @@
 
-//import patient interface from the models class
-import { Patient } from '../models/patient';
+//import patient from the models class
+import { Patient } from './patient';
 
-export interface WeightMeasurement {
+
+export class  WeightMeasurement {
   weightID: number;
   weight: number;
   weightComment?: string;
   date: string; // ISO date string
   patient: Patient;
- 
+
+  constructor(weightID: number
+    , weight: number
+    , weightComment: string
+    , date: string
+    , patient: Patient) 
+    {
+    this.weightID = weightID;
+    this.weight = weight;
+    this.weightComment = weightComment;
+    this.date = date;
+    this.patient = patient;
+  }
+
 }
+
+ 

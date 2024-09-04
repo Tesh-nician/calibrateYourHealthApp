@@ -1,4 +1,4 @@
-export interface Doctor {
+export class Doctor {
   doctorID: number;
   firstName: string;
   lastName: string;
@@ -6,4 +6,20 @@ export interface Doctor {
   password: string;
   username: string;
   confirmPassword: string;
+
+  constructor(doctorID: number
+    , firstName: string
+    , lastName: string
+    , rizivNumber: number
+    , password: string
+    , username: string
+    , confirmPassword: string) {
+    this.doctorID = doctorID;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.rizivNumber = rizivNumber;
+    this.password = password;
+    this.username = username;
+    this.confirmPassword = confirmPassword;
+  }
 }

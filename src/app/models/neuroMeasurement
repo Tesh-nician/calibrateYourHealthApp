@@ -1,10 +1,20 @@
+//im,port patient class from the models folder
+import { Patient } from '../models/patient'
 
-import { Patient } from '../models/patient';
+export class NeuroMeasurement {
 
-export interface NeuroMeasurement {
   neuroID: number;
   neuroMeasurement: number;
-  neuroComment?: string;
   date: string; // ISO date string
   patient: Patient;
+
+  constructor(neuroID: number, neuroMeasurement: number, date: string, patient: Patient) {
+    this.neuroID = neuroID;
+    this.neuroMeasurement = neuroMeasurement;
+    this.date = date;
+    this.patient = patient;
+    
+  }
+
+  
 }

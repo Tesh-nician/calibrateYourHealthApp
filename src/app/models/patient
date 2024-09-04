@@ -1,8 +1,8 @@
-import { BloodPressureMeasurement } from '../models/bloodPressureComment';
-import { WeightMeasurement } from '../models/weightMeasurement';
-import { NeuroMeasurement } from '..models/neuroMeasurement';
+import { WeightMeasurement } from './weightMeasurement;
+import { BloodPressureMeasurement } from './bloodPressureMeasurement';
+import { NeuroMeasurement } from './neuroMeasurement';
 
-export interface Patient {
+export class Patient {
   id: number;
   firstName: string;
   lastName: string;
@@ -13,4 +13,31 @@ export interface Patient {
   myBloodPressureMeasurements?: BloodPressureMeasurement[];
   myWeightMeasurements?: WeightMeasurement[];
   myNeuroMeasurements?: NeuroMeasurement[];
+
+  constructor(
+    id: number,
+    firstName: string,
+    lastName: string,
+    dateOfBirth: string,
+    username: string,
+    password: string,
+    confirmPassword: string,
+    myBloodPressureMeasurements?: BloodPressureMeasurement[],
+    myWeightMeasurements?: WeightMeasurement[],
+    myNeuroMeasurements?: NeuroMeasurement[]
+  ) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dateOfBirth = dateOfBirth;
+    this.username = username;
+    this.password = password;
+    this.confirmPassword = confirmPassword;
+    this.myBloodPressureMeasurements = myBloodPressureMeasurements;
+    this.myWeightMeasurements = myWeightMeasurements;
+    this.myNeuroMeasurements = myNeuroMeasurements;
+  }
+
+  
+
 }

@@ -1,6 +1,6 @@
-import { Patient } from "../models/patient";
+import { Patient  } from  '../models/patient';
 
-export interface BloodPressureMeasurement {
+export class  BloodPressureMeasurement {
   bloodPressureID: number;
   systolicPressure: number;
   diastolicPressure: number;
@@ -8,4 +8,21 @@ export interface BloodPressureMeasurement {
   date: string; // ISO date string
   bloodPressureComment?: string;
   patient: Patient;
+
+  constructor(bloodPressureID: number
+    , systolicPressure: number
+    , diastolicPressure: number
+    , pulse: number
+    , date: string
+    , bloodPressureComment: string
+    , patient: Patient) 
+    {
+    this.bloodPressureID = bloodPressureID;
+    this.systolicPressure = systolicPressure;
+    this.diastolicPressure = diastolicPressure;
+    this.pulse = pulse;
+    this.date = date;
+    this.bloodPressureComment = bloodPressureComment;
+    this.patient = patient;
+  }
 }
