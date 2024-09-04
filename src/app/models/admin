@@ -1,8 +1,10 @@
 
-export interface Admin {
-id: number;
-userName: string;
-password: string;
+export class Admin {
+    constructor(
+public id: number,
+public userName: string,
+public password: string
+    ) { }
 
   
 }
