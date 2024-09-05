@@ -1,21 +1,21 @@
-import { Patient  } from  '../models/patient';
+
 
 export class  BloodPressureMeasurement {
-  bloodPressureID: number;
-  systolicPressure: number;
-  diastolicPressure: number;
-  pulse: number;
-  date: string; // ISO date string
-  bloodPressureComment?: string;
-  patient: Patient;
+  bloodPressureID: Number;
+  systolicPressure: Number;
+  diastolicPressure: Number;
+  pulse: Number;
+  date: String; // ISO date string
+  bloodPressureComment?: String;
+  patientid: Number;
 
-  constructor(bloodPressureID: number
-    , systolicPressure: number
-    , diastolicPressure: number
-    , pulse: number
-    , date: string
-    , bloodPressureComment: string
-    , patient: Patient) 
+  constructor(bloodPressureID: Number
+    , systolicPressure: Number
+    , diastolicPressure: Number
+    , pulse: Number
+    , date: String
+    , bloodPressureComment: String
+    , patientid: Number) 
     {
     this.bloodPressureID = bloodPressureID;
     this.systolicPressure = systolicPressure;
@@ -23,6 +23,6 @@ export class  BloodPressureMeasurement {
     this.pulse = pulse;
     this.date = date;
     this.bloodPressureComment = bloodPressureComment;
-    this.patient = patient;
+    this.patientid = patientid;
   }
 }

@@ -1,4 +1,4 @@
-import { WeightMeasurement } from '../models/weightmeasurements';
+import { WeightMeasurement } from '../models/weightmeasurement';
 import { BloodPressureMeasurement } from '../models/bloodpressuremeasurement';
 import { NeuroMeasurement } from '../models/neuromeasurement';
 

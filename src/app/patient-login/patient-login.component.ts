@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -22,27 +24,41 @@ import { HttpClientModule } from '@angular/common/http';
 export class PatientLoginComponent {
   username: string = '';
   password: string = '';
+  patientId: number | null = null;
   errorMessage: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  private baseUrl = 'http://localhost:8080/api/patients/login';
+  
   login() {
+  
+      //const payload = { username: this.username, password: this.password };
+      //console.log('Payload:', payload);
+  
+      const params = new HttpParams()
+        .set('username', this.username)
+        .set('password', this.password);
+  
+        console.log('Params:', params);
 
-    //const payload = { username: this.username, password: this.password };
-    //console.log('Payload:', payload);
-
-    const params = new HttpParams()
-      .set('username', this.username)
-      .set('password', this.password);
-
-      console.log('Params:', params);
-
- // Make a POST request to the server to login the admin
- this.http.post('http://localhost:8080/api/patients/login', null, { params, responseType: 'text' })
+ // Make a POST request to the server to login the admin 
+ this.http.post<{ message: string, patientId: number }>('http://localhost:8080/api/patients/login', null, { params})
  .subscribe(
    response => {
-     console.log('Login successful', response);
-     this.router.navigate(['/patient-dashboard']);
+
+    
+     console.log('Login successful', response.message);
+     
+     //attribute patientId to response
+    this.patientId = response.patientId
+    
+    //show patientID in console TODO: remove in production!!!
+    console.log('Patient ID:', this.patientId);     
+    
+    //Send patient id to patient dashboard component. VERY IMPORTANT THAT THIS WORKS!!!!
+    this.router.navigate(['/patient-dashboard'], { queryParams: { patientId: response.patientId } });
+     
    },
    error => {
      console.error('Login failed', error);

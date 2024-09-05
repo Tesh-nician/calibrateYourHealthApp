@@ -16,6 +16,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
+navigateToHome() {
+  window.location.href = 'http://localhost:4200/home';
+}
+
   admins: any[] = [];
   doctors: any[] = [];
   patients: any[] = [];

@@ -1,19 +1,19 @@
 export class Doctor {
-  doctorID: number;
-  firstName: string;
-  lastName: string;
-  rizivNumber: number;
-  password: string;
-  username: string;
-  confirmPassword: string;
+  doctorID: Number;
+  firstName: String;
+  lastName: String;
+  rizivNumber: Number;
+  password: String;
+  username: String;
+  confirmPassword: String;
 
-  constructor(doctorID: number
-    , firstName: string
-    , lastName: string
-    , rizivNumber: number
-    , password: string
-    , username: string
-    , confirmPassword: string) {
+  constructor(doctorID: Number
+    , firstName: String
+    , lastName: String
+    , rizivNumber: Number
+    , password: String
+    , username: String
+    , confirmPassword: String) {
     this.doctorID = doctorID;
     this.firstName = firstName;
     this.lastName = lastName;

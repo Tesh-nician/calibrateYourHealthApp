@@ -2,12 +2,12 @@
 
 export class Admin {
 
-    id: number;
-    userName: string;
-    password: string;
+    adminid: Number;
+    userName: String;
+    password: String;
     
-    constructor (id:number, userName: string, password: string) {
-        this.id = id;
+    constructor (adminid:Number, userName: String, password: String) {
+        this.adminid = adminid;
         this.userName = userName;
         this.password = password;
         

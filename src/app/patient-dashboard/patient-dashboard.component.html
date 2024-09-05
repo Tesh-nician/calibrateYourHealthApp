@@ -1,1 +1,102 @@
-<p>patient-dashboard works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    
+</head>
+<body>
+    <div class="dashboard-container">
+        <button (click)="logout()">Logout</button>
+        <button (click)="modifyDetails()">Modify My Details</button>
+      
+        <div class="section">
+          <h3>Blood Pressure Measurements</h3>
+          <div id="bloodPressureChart"></div>
+          <button (click)="addBloodPressureMeasurement()">Add New Blood Pressure Measurement</button>
+        </div>
+      
+        <div class="section">
+          <h3>Weight Measurements</h3>
+          <div id="weightChart"></div>
+          <button (click)="addWeightMeasurement()">Add New Weight Measurement</button>
+        </div>
+      
+        <div class="section">
+          <h3>Neuro Measurements</h3>
+          <div id="neuroChart"></div>
+          <button (click)="addNeuroMeasurement()">Add New Neuro Measurement</button>
+        </div>
+      </div>
+      
+      <!-- Modify Details Modal -->
+      <div *ngIf="showModifyDetailsModal" class="modal">
+        <div class="modal-content">
+          <span class="close" (click)="closeModifyDetailsModal()">&times;</span>
+          <h2>Modify My Details</h2>
+          <form (submit)="submitModifyDetails()">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" id="dateOfBirth" [(ngModel)]="modifyDetailsForm.dateOfBirth" name="dateOfBirth" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" [(ngModel)]="modifyDetailsForm.password" name="password" required>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Add Blood Pressure Measurement Modal -->
+      <div *ngIf="showAddBloodPressureModal" class="modal">
+        <div class="modal-content">
+          <span class="close" (click)="closeAddBloodPressureModal()">&times;</span>
+          <h2>Add Blood Pressure Measurement</h2>
+          <form (submit)="submitBloodPressureMeasurement()">
+            <label for="systolicPressure">Systolic Pressure:</label>
+            <input type="number" id="systolicPressure" [(ngModel)]="bloodPressureForm.systolicPressure" name="systolicPressure" required>
+            <label for="diastolicPressure">Diastolic Pressure:</label>
+            <input type="number" id="diastolicPressure" [(ngModel)]="bloodPressureForm.diastolicPressure" name="diastolicPressure" required>
+            <label for="pulse">Pulse:</label>
+            <input type="number" id="pulse" [(ngModel)]="bloodPressureForm.pulse" name="pulse" required>
+            <label for="comment">Comment:</label>
+            <input type="text" id="comment" [(ngModel)]="bloodPressureForm.comment" name="comment">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Add Weight Measurement Modal -->
+      <div *ngIf="showAddWeightModal" class="modal">
+        <div class="modal-content">
+          <span class="close" (click)="closeAddWeightModal()">&times;</span>
+          <h2>Add Weight Measurement</h2>
+          <form (submit)="submitWeightMeasurement()">
+            <label for="weight">Weight:</label>
+            <input type="number" id="weight" [(ngModel)]="weightForm.weight" name="weight" required>
+            <label for="comment">Comment:</label>
+            <input type="text" id="comment" [(ngModel)]="weightForm.comment" name="comment">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Add Neuro Measurement Modal -->
+      <div *ngIf="showAddNeuroModal" class="modal">
+        <div class="modal-content">
+          <span class="close" (click)="closeAddNeuroModal()">&times;</span>
+          <h2>Add Neuro Measurement</h2>
+          <form (submit)="submitNeuroMeasurement()">
+            <label for="neuroMeasurement">Neuro Measurement:</label>
+            <input type="number" id="neuroMeasurement" [(ngModel)]="neuroForm.neuroMeasurement" name="neuroMeasurement" required>
+            <label for="comment">Comment:</label>
+            <input type="text" id="comment" [(ngModel)]="neuroForm.comment" name="comment">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+
