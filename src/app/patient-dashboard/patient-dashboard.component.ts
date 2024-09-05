@@ -63,6 +63,20 @@ export class PatientDashboardComponent implements OnInit {
 
   loadCharts() {
     // Load charts using a charting library like Chart.js or D3.js
+    // Example:
+    // const data = this.http.get<any[]>('http://localhost:8080/api/patients/' + this.patientId + '/blood-pressures');
+    // const bloodPressureChart = new Chart(document.getElementById('bloodPressureChart'), {
+    //   type: 'line',
+    //   data: {
+    //     labels: data.map(bp => bp.measurementDate),
+    //     datasets: [{
+    //       label: 'Blood Pressure',
+    //       data: data.map(bp => bp.systolicPressure + '/' + bp.diastolicPressure),
+    //       backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    //       borderColor: 'rgba(75, 192, 192, 1)',
+    //       borderWidth: 1
+    //     }]
+    //   },
   }
 
   logout() {
@@ -95,7 +109,32 @@ export class PatientDashboardComponent implements OnInit {
 
   submitBloodPressureMeasurement() {
     // Submit blood pressure measurement form
+    const bloodPressureMeasurement = {
+      systolicPressure: this.bloodPressureForm.systolicPressure,
+      diastolicPressure: this.bloodPressureForm.diastolicPressure,
+      pulse: this.bloodPressureForm.pulse,
+      date: new Date().toISOString().split('T')[0], // Current date in YYYY-MM-DD format
+      bloodPressureComment: this.bloodPressureForm.comment,
+      patient: { id: this.patientId} //in backend this should be a patient object
+    };
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    
+    this.http.post('http://localhost:8080/api/patients/blood-pressure-measurements', bloodPressureMeasurement, { headers, responseType: 'text' })
+      .subscribe(
+        response => {
+          alert('Blood pressure measurement added successfully');
+          console.log('Blood pressure measurement added successfully', response);
+          this.closeAddBloodPressureModal();
+        },
+        error => {
+          alert('Error adding blood pressure measurement');
+          console.error('Error adding blood pressure measurement', error);
+        }
+      );   
+
     this.closeAddBloodPressureModal();
+
   }
 
   addWeightMeasurement() {
@@ -116,7 +155,7 @@ export class PatientDashboardComponent implements OnInit {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.post('http://localhost:8080/api/patients/weight-measurements', weightMeasurement, { headers })
+    this.http.post('http://localhost:8080/api/patients/weight-measurements', weightMeasurement, { headers, responseType: 'text' })
       .subscribe(
         response => {
           alert('Weight measurement added successfully');
@@ -128,6 +167,9 @@ export class PatientDashboardComponent implements OnInit {
           console.error('Error adding weight measurement', error);
         }
       );
+
+      this.closeAddWeightModal();
+
   }
 
   addNeuroMeasurement() {
@@ -140,6 +182,31 @@ export class PatientDashboardComponent implements OnInit {
 
   submitNeuroMeasurement() {
     // Submit neuro measurement form
-    this.closeAddNeuroModal();
+    const neuroMeasurement = {
+      neuroMeasurement: this.neuroForm.neuroMeasurement,
+      date: new Date().toISOString().split('T')[0], // Current date in YYYY-MM-DD format
+      neuroComment: this.neuroForm.comment,
+      patient: { id: this.patientId} //in backend this should be a patient object
+    };
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http.post('http://localhost:8080/api/patients/neuro-measurements', neuroMeasurement, { headers, responseType: 'text' })
+      .subscribe(
+        response => {
+          alert('Neuro measurement added successfully');
+          console.log('Neuro measurement added successfully', response);
+          this.closeAddNeuroModal();
+        },
+        error => {
+          alert('Error adding neuro measurement');
+          console.error('Error adding neuro measurement', error);
+        }
+      ); 
+
+      this.closeAddNeuroModal();
+
   }
+
+
+
 }
