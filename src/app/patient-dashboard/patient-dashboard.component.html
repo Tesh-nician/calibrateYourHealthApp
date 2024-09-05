@@ -13,18 +13,43 @@
       
         <div class="section">
           <h3>Blood Pressure Measurements</h3>
+
+          //add scrolling list of blood pressure measurements with date and a button to delete each one
+          <div id="bloodPressureMeasurementsList">
+            <div *ngFor="let bloodPressureMeasurement of bloodPressureMeasurements">
+              <p>{{bloodPressureMeasurement.date}} - Systolic: {{bloodPressureMeasurement.systolicPressure}}, Diastolic: {{bloodPressureMeasurement.diastolicPressure}}, Pulse: {{bloodPressureMeasurement.pulse}} <button (click)="deleteBloodPressureMeasurement(bloodPressureMeasurement.id)">Delete</button></p>
+            </div>
+          </div>
+        
+
           <div id="bloodPressureChart"></div>
+
           <button (click)="addBloodPressureMeasurement()">Add New Blood Pressure Measurement</button>
         </div>
       
         <div class="section">
           <h3>Weight Measurements</h3>
+
+          //add scrolling list of weight measurements with date and a button to delete each one
+          <div id="weightMeasurementsList">
+            <div *ngFor="let weightMeasurement of weightMeasurements">
+              <p>{{weightMeasurement.date}} - Weight: {{weightMeasurement.weight}} <button (click)="deleteWeightMeasurement(weightMeasurement.id)">Delete</button></p>
+            </div>
+          </div>
+          
           <div id="weightChart"></div>
           <button (click)="addWeightMeasurement()">Add New Weight Measurement</button>
         </div>
       
         <div class="section">
           <h3>Neuro Measurements</h3>
+          //add scrolling list of neuro measurements with date and a button to delete each one
+          <div id="neuroMeasurementsList">
+            <div *ngFor="let neuroMeasurement of neuroMeasurements">
+              <p>{{neuroMeasurement.date}} - Neuro Measurement: {{neuroMeasurement.neuroMeasurement}} <button (click)="deleteNeuroMeasurement(neuroMeasurement.id)">Delete</button></p>
+            </div>
+          </div>
+          
           <div id="neuroChart"></div>
           <button (click)="addNeuroMeasurement()">Add New Neuro Measurement</button>
         </div>
