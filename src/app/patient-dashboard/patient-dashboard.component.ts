@@ -18,6 +18,10 @@ export class PatientDashboardComponent implements OnInit {
 
   patientId: number | null = null;
 
+  weightMeasurements: any[] = [];
+  bloodPressureMeasurements: any[] = [];
+  neuroMeasurements: any[] = [];
+
   showModifyDetailsModal = false;
   showAddBloodPressureModal = false;
   showAddWeightModal = false;
@@ -45,9 +49,7 @@ export class PatientDashboardComponent implements OnInit {
     comment: ''
   };
 
-  bloodPressureMeasurements: any[] = [];
-  weightMeasurements: any[] = [];
-  neuroMeasurements: any[] = [];
+  
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
