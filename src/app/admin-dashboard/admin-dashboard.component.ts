@@ -24,6 +24,8 @@ navigateToHome() {
   doctors: any[] = [];
   patients: any[] = [];
 
+  
+
   constructor(private http: HttpClient) {}
 
   ngOnInit() {

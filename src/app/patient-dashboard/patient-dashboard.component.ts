@@ -49,6 +49,25 @@ export class PatientDashboardComponent implements OnInit {
     comment: ''
   };
 
+
+  averageWeightForMonth: number | null = null;
+  averageWeightForYear: number | null = null;
+
+
+  averageBloodPressureForMonth= {
+    systolicPressure: 0,
+    diastolicPressure: 0,
+    pulse: 0
+  };
+  averageBloodPressureForYear= {
+    systolicPressure: 0,
+    diastolicPressure: 0,
+    pulse: 0
+  };
+
+  averageNeuroForMonth: number | null = null;
+  averageNeuroForYear: number | null = null;
+
   
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
@@ -67,12 +86,110 @@ export class PatientDashboardComponent implements OnInit {
     this.loadNeuroMeasurements();
   }
 
+
+  //method that fetches the average bloodpressure of the patient for this year from the backendd using the following Controller method:
+  
+  getAverageBloodPressureForYear() {
+    this.http.get<any>(`http://localhost:8080/api/patients/${this.patientId}/blood-pressure-measurements/average-year`)
+      .subscribe(data => {
+        this.averageBloodPressureForYear = data;
+        console.log('Average Blood Pressure for Year:', data);
+      }, error => {
+        console.error('Error fetching average blood pressure for year:', error);
+      });
+  }
+
+
+  //method that fetches the average bloodpressure of the patient for this month from the backendd using the following Controller method:
+
+
+   
+getAverageBloodPressureForMonth() {
+  this.http.get<any>(`http://localhost:8080/api/patients/${this.patientId}/blood-pressure-measurements/average-month`)
+    .subscribe(data => {
+      this.averageBloodPressureForMonth = {
+        systolicPressure: data.systolicPressure,
+        diastolicPressure: data.diastolicPressure,
+        pulse: data.pulse
+      };
+      console.log('Average Blood Pressure for Month:', data);
+    }, error => {
+      console.error('Error fetching average blood pressure for month:', error);
+    }
+  );
+}
+
+
+ //method that fetches the average weight of the patient for the current month
+    
+    getAverageWeightForMonth() {
+      this.http.get<number>(`http://localhost:8080/api/patients/${this.patientId}/weight-measurements/average-month`)
+        .subscribe(data => {
+          this.averageWeightForMonth = data;
+          console.log('Average Weight for Month:', data);
+        }, error => {
+          console.error('Error fetching average weight for month:', error);
+        });        
+    }
+
+
+    //method that fetches the average weight of the patient for the current year
+
+    getAverageWeightForYear() {
+      this.http.get<number>(`http://localhost:8080/api/patients/${this.patientId}/weight-measurements/average-year`)
+        .subscribe(data => {
+          this.averageWeightForYear = data;
+          console.log('Average Weight for Year:', data);
+        }, error => {
+          console.error('Error fetching average weight for year:', error);
+        }
+      );
+    }
+
+
+
+    //method that fetches the average neuro measurement of the patient for the current month
+
+    getAverageNeuroMeasurementForMonth() {
+      this.http.get<number>(`http://localhost:8080/api/patients/${this.patientId}/neuro-measurements/average-month`)
+       .subscribe(data => {
+        this.averageNeuroForMonth = data;
+          console.log('Average Neuro Measurement for Month:', data);
+        }, error => {
+          console.error('Error fetching average neuro measurement for month:', error);
+        });
+    }
+        
+
+
+    //method that fetches the average neuro measurement of the patient for the current year
+
+    getAverageNeuroMeasurementForYear() {
+      this.http.get<number>(`http://localhost:8080/api/patients/${this.patientId}/neuro-measurements/average-year`)
+       .subscribe(data => {
+          this.averageNeuroForYear = data;
+          console.log('Average Neuro Measurement for Year:', data);
+          }, error => {
+          console.error('Error fetching average neuro measurement for year:', error);
+          });
+    }
+
+
+
+    
   loadBloodPressureMeasurements() {
     this.http.get<any[]>(`http://localhost:8080/api/patients/${this.patientId}/blood-pressure-measurements`)
       .subscribe(data => {
         this.bloodPressureMeasurements = data;
       });
   }
+
+
+
+
+
+   
+
 
   loadWeightMeasurements() {
     this.http.get<any[]>(`http://localhost:8080/api/patients/${this.patientId}/weight-measurements`)

@@ -21,6 +21,7 @@
             </div>
           </div>
         
+          <P> Average Blood Pressure for Month(S/D/P): {{averageBloodPressureForMonth.systolicPressure}}/ {{averageBloodPressureForMonth.diastolicPressure}}/{{averageBloodPressureForMonth.pulse}} </P>
 
           <div id="bloodPressureChart"></div>
 
@@ -38,6 +39,10 @@
               </div>
             
           </div>
+
+
+          <p>Average Weight for Month: {{averageWeightForMonth}}kg</p>
+          <p>Average Weight for Year: {{averageWeightForYear}}kg</p>
           
           <div id="weightChart"></div>
           <button (click)="addWeightMeasurement()">Add New Weight Measurement</button>
@@ -52,6 +57,9 @@
             </div>
           </div>
           
+          <P> Average Neuro Measurement for Month: {{averageNeuroForMonth}}</P>
+          <P> Average Neuro Measurement for Year: {{averageNeuroForYear}}</P>
+
           <div id="neuroChart"></div>
           <button (click)="addNeuroMeasurement()">Add New Neuro Measurement</button>
         </div>
