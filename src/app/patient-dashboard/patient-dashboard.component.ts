@@ -89,23 +89,55 @@ export class PatientDashboardComponent implements OnInit {
   }
 
   deleteBloodPressureMeasurement(id: number) {
-    this.http.delete(`http://localhost:8080/api/patients/blood-pressure-measurements/${id}`)
-      .subscribe(() => {
-        this.loadBloodPressureMeasurements();
+    this.http.delete(`http://localhost:8080/api/patients/blood-pressure-measurements/${id}`, { observe: 'response', responseType: 'text' })
+      .subscribe({
+        next:(response:any) => {
+          if (response.status === 200) {
+            console.log('Blood pressure measurement deleted successfully');
+            alert('Blood pressure measurement deleted successfully');
+            this.loadBloodPressureMeasurements();
+          } else {
+            console.error('Unexpected response status:', response.status);
+          }
+        },
+        error: (error) => {
+          console.error('Error deleting blood pressure measurement:', error);
+        }
       });
   }
 
   deleteWeightMeasurement(id: number) {
-    this.http.delete(`http://localhost:8080/api/patients/weight-measurements/${id}`)
-      .subscribe(() => {
-        this.loadWeightMeasurements();
+    this.http.delete(`http://localhost:8080/api/patients/weight-measurements/${id}`, { observe: 'response', responseType: 'text' })
+      .subscribe({
+        next:(response:any) => {
+          if (response.status === 200) {
+            console.log('Weight measurement deleted successfully');
+            alert('Weight measurement deleted successfully');
+            this.loadWeightMeasurements();
+          } else {
+            console.error('Unexpected response status:', response.status);
+          }
+        },
+        error: (error) => {
+          console.error('Error deleting weight measurement:', error);
+        }
       });
   }
 
   deleteNeuroMeasurement(id: number) {
-    this.http.delete(`http://localhost:8080/api/patients/neuro-measurements/${id}`)
-      .subscribe(() => {
-        this.loadNeuroMeasurements();
+    this.http.delete(`http://localhost:8080/api/patients/neuro-measurements/${id}`, { observe: 'response', responseType: 'text' })
+      .subscribe({
+        next:(response:any) => {
+          if (response.status === 200) {
+            console.log('Neuro measurement deleted successfully');
+            alert('Neuro measurement deleted successfully');
+            this.loadNeuroMeasurements();
+          } else {
+            console.error('Unexpected response status:', response.status);
+          }
+        }, error: (error) => {
+          console.error('Error deleting neuro measurement:', error);
+        }
       });
   }
 
