@@ -68,16 +68,31 @@ export class PatientDashboardComponent implements OnInit {
   averageNeuroForMonth: number | null = null;
   averageNeuroForYear: number | null = null;
 
-  
+   // Define requestMonitor
+   requestMonitor: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.patientId = params['patientId'];
     });
+
+
+    //Initialize requestMonitor
+    this.requestMonitor = {
+      requestCount: 0,
+      requestErrorCount: 0
+    }
   }
 
   ngOnInit() {
     this.loadMeasurements();
+    this.getAverageWeightForMonth(); // Ensure this method is called
+    this.getAverageWeightForYear();
+    this.getAverageBloodPressureForMonth();
+    this.getAverageBloodPressureForYear();
+    this.getAverageNeuroMeasurementForMonth();
+    this.getAverageNeuroMeasurementForYear();
+
   }
 
   loadMeasurements() {
@@ -123,6 +138,8 @@ getAverageBloodPressureForMonth() {
  //method that fetches the average weight of the patient for the current month
     
     getAverageWeightForMonth() {
+      console.log('now getting average weight for month');
+
       this.http.get<number>(`http://localhost:8080/api/patients/${this.patientId}/weight-measurements/average-month`)
         .subscribe(data => {
           this.averageWeightForMonth = data;
@@ -136,6 +153,10 @@ getAverageBloodPressureForMonth() {
     //method that fetches the average weight of the patient for the current year
 
     getAverageWeightForYear() {
+
+      console.log('now getting average weight for year');
+
+
       this.http.get<number>(`http://localhost:8080/api/patients/${this.patientId}/weight-measurements/average-year`)
         .subscribe(data => {
           this.averageWeightForYear = data;

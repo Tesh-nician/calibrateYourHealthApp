@@ -13,6 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+<<<<<<< Tabnine <<<<<<<
+            "sourceMap": true
+>>>>>>> Tabnine >>>>>>>,
             "outputPath": "dist/calibrate-your-health-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -55,7 +58,7 @@
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
+        "serve": {          
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
