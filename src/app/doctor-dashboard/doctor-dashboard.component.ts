@@ -68,6 +68,7 @@ DoctorDashboardComponent implements OnInit {
     diastolicPressure: 0,
     pulse: 0
   };
+
   averageBloodPressureForYear= {
     systolicPressure: 0,
     diastolicPressure: 0,
@@ -124,7 +125,11 @@ DoctorDashboardComponent implements OnInit {
   getAverageBloodPressureForYear() {
     this.http.get<any>(`http://localhost:8080/api/patients/${this.patientId}/blood-pressure-measurements/average-year`)
       .subscribe(data => {
-        this.averageBloodPressureForYear = data;
+        this.averageBloodPressureForYear = {
+          systolicPressure: data.systolicPressure,
+          diastolicPressure: data.diastolicPressure,
+          pulse: data.pulse
+        };
         console.log('Average Blood Pressure for Year:', data);
       }, error => {
         console.error('Error fetching average blood pressure for year:', error);
@@ -147,8 +152,7 @@ getAverageBloodPressureForMonth() {
       console.log('Average Blood Pressure for Month:', data);
     }, error => {
       console.error('Error fetching average blood pressure for month:', error);
-    }
-  );
+    });
 }
 
 

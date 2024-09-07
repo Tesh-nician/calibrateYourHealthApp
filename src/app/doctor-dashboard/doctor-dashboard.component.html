@@ -1,105 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Dashboard</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Dashboard</title>
+  
 </head>
 <body>
-    <div class="dashboard-container">
-        <button (click)="logout()">Logout</button>
-        <button (click)="modifyDetails()">Modify My Details</button>
+  <div class="dashboard-container">
+    <button (click)="logout()">Logout</button>
+    <button (click)="modifyDetails()">Modify My Details</button>
 
-        <div class="section">
-          <h3>List of all Patients</h3>
-          <ul>
-            <li *ngFor="let patient of patients">
-              {{ 'ID= '+ patient.id +  ' '+ patient.firstName + ' ' + patient.lastName }}
-              <button (click)="viewPatient(patient.id)">Select</button>
-              
-            </li>
-          </ul>
-        </div>
+    <div class="section">
+      <h2>List of all Patients</h2>
       
-      
-        <div class="section">
-          <h3>BCardiological Measurements</h3>
-
-          //add scrolling list of cardiological parameters with date and a button to delete each one
-          <div id="bloodPressureMeasurementsList">
-            <div *ngFor="let bloodPressureMeasurement of bloodPressureMeasurements">
-              <p>{{bloodPressureMeasurement.date}} - Systolic: {{bloodPressureMeasurement.systolicPressure}}, Diastolic: {{bloodPressureMeasurement.diastolicPressure}}, Pulse: {{bloodPressureMeasurement.pulse}}  -  Comment: {{bloodPressureMeasurement.bloodPressureComment}}</p>
-            </div>
-          </div>
+      <div *ngFor="let patient of patients">
+        {{ '('+ patient.id + ')  '+ patient.firstName + ' ' + patient.lastName }}
+        <button (click)="viewPatient(patient.id)">Select</button>
         
-          <P> Average cardiological values for the latest  Month (S / D / P): {{averageBloodPressureForMonth.systolicPressure}} mmHg  /  {{averageBloodPressureForMonth.diastolicPressure}} mmHg  /{{averageBloodPressureForMonth.pulse}} bpm</P>
-          <P> Average cardiological values for the last year (S / D / P): {{averageBloodPressureForYear.systolicPressure}}  mmHg  /  {{averageBloodPressureForYear.diastolicPressure}} mmHg  / {{averageBloodPressureForYear.pulse}}  bpm         <div id="bloodPressureChart"></div>
-
-         
-        </div>
-      
-        <div class="section">
-          <h3>Weight Measurements</h3>
-
-          //add scrolling list of weight measurements with date and a button to delete each one
-          <div id="weightMeasurementsList">
-            
-              <div *ngFor="let weightMeasurement of weightMeasurements">
-               <p> {{weightMeasurement.date}}: {{weightMeasurement.weight}}kg  - Comment: {{weightMeasurement.weightComment}} id: {{weightMeasurement.weightID}}</p>
-              </div>
-            
-          </div>
-
-
-          <p>Average Weight for Month: {{averageWeightForMonth}} kg</p>
-          <p>Average Weight for Year: {{averageWeightForYear}} kg</p>
-          
-          <div id="weightChart"></div>
-          
-        </div>
-      
-        <div class="section">
-          <h3>Neurological parameters (one-legged balance in seconds):</h3>
-          //add scrolling list of neuro measurements with date and a button to delete each one
-          <div id="neuroMeasurementsList">
-            <div *ngFor="let neuroMeasurement of neuroMeasurements">
-              <p>{{neuroMeasurement.date}} - Balance duration: {{neuroMeasurement.neuroMeasurement}} seconds -  Comment: {{neuroMeasurement.neuroComment}} </p>
-            </div>
-          </div>
-          
-          <P> Average Neuro Measurement for Month: {{averageNeuroForMonth}} seconds</P>
-          <P> Average Neuro Measurement for Year: {{averageNeuroForYear}} seconds</P>
-
-          <div id="neuroChart"></div>
-        
-        </div>
       </div>
       
-      <!-- Modify Details Modal -->
-      <div *ngIf="showModifyDetailsModal" class="modal">
-        <div class="modal-content">
-          <span class="close" (click)="closeModifyDetailsModal()">&times;</span>
-          <h2>Modify My Details</h2>
-          <form (submit)="submitModifyDetails()">
-            <label for="dateOfBirth">Date of Birth:</label>
-            <input type="date" id="dateOfBirth" [(ngModel)]="modifyDetailsForm.dateOfBirth" name="dateOfBirth" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" [(ngModel)]="modifyDetailsForm.password" name="password" required>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
-      
-       
+    </div>
+    
+    
+    <div class="section">
+      <h2>Cardiological Measurements</h2>
+
      
+      <div id="bloodPressureMeasurementsList"  style="overflow-y: scroll; height: 200px;">
+      <div *ngFor="let bloodPressureMeasurement of bloodPressureMeasurements">
+        <p>{{bloodPressureMeasurement.date}} - Systolic: {{bloodPressureMeasurement.systolicPressure}}, Diastolic: {{bloodPressureMeasurement.diastolicPressure}}, Pulse: {{bloodPressureMeasurement.pulse}}  -  Comment: {{bloodPressureMeasurement.bloodPressureComment}}</p>
+      </div>
+      </div>
+    
+      <P> <strong>Average cardiological values for the latest  Month (S / D / P): {{averageBloodPressureForMonth.systolicPressure}} mmHg  /  {{averageBloodPressureForMonth.diastolicPressure}} mmHg  /{{averageBloodPressureForMonth.pulse}}  bpm</strong></P>
+      <P> <strong>Average cardiological values for the latest  Year (S / D / P): {{averageBloodPressureForYear.systolicPressure}}  mmHg  / {{averageBloodPressureForYear.diastolicPressure}}  mmHg  / {{averageBloodPressureForYear.pulse}}  bpm</strong></P>
       
     
+     
+    </div>
+    
+    <div class="section">
+      <h2>Weight Measurements</h2>
+
+      
+      <div id="weightMeasurementsList" style="overflow-y: scroll; height: 200px;">
+      <div *ngFor="let weightMeasurement of weightMeasurements">
+        <p>{{weightMeasurement.date}}: {{weightMeasurement.weight}}kg - Comment: {{weightMeasurement.weightComment}} id: {{weightMeasurement.weightID}}</p>
+      </div>
+      </div>
+
+
+<p *ngIf="averageWeightForMonth !== null"><strong>Average Weight for Month: {{averageWeightForMonth.toFixed(2)}} kg </strong></p>
+<p *ngIf="averageWeightForYear !== null"><strong>Average Weight for Year: {{averageWeightForYear.toFixed(2)}} kg </strong></p>
+      
+      <div id="weightChart"></div>
+      
+    </div>
+    
+    <div class="section">
+      <h2>Neurological parameters (one-legged balance in seconds):</h2>
+      
+      
+      
+      <div id="neuroMeasurementsList" style="overflow-y: scroll; height: 200px;">
+      <div *ngFor="let neuroMeasurement of neuroMeasurements"  >
+        <p>{{neuroMeasurement.date}} - Balance duration: {{neuroMeasurement.neuroMeasurement}} seconds -  Comment: {{neuroMeasurement.neuroComment}} </p>
+      </div>
+      </div>
+      
+      <P><strong> Average Neuro Measurement for Month: {{averageNeuroForMonth}} seconds</strong></P>
+      <P> <strong>Average Neuro Measurement for Year: {{averageNeuroForYear}} seconds</strong></P>
+
+      <div id="neuroChart"></div>
+    
+    </div>
+    </div>
+    
+    <!-- Modify Details Modal -->
+    <div *ngIf="showModifyDetailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModifyDetailsModal()">&times;</span>
+      <h2>Modify My Details</h2>
+      <form (submit)="submitModifyDetails()">
+      <label for="dateOfBirth">Date of Birth:</label>
+      <input type="date" id="dateOfBirth" [(ngModel)]="modifyDetailsForm.dateOfBirth" name="dateOfBirth" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="modifyDetailsForm.password" name="password" required>
+      <button type="submit">Submit</button>
+      </form>
+    </div>
+    </div>
+    
+     
+   
+    
+  
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
