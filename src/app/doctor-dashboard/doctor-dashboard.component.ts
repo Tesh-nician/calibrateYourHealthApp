@@ -21,7 +21,7 @@ DoctorDashboardComponent implements OnInit {
 
 
 
- patientId: number = 0;
+ patientId: number =0;
 
   doctorId: number | null = null;
 
@@ -96,7 +96,7 @@ DoctorDashboardComponent implements OnInit {
   ngOnInit() {
     this.fetchPatients();
     this.loadMeasurements();
-    this.getAverageWeightForMonth(); // Ensure this method is called
+    this.getAverageWeightForMonth(); 
     this.getAverageWeightForYear();
     this.getAverageBloodPressureForMonth();
     this.getAverageBloodPressureForYear();
@@ -243,10 +243,17 @@ getAverageBloodPressureForMonth() {
       });
   }
 
-
   viewPatient(patientId: number) {
-    //select patient from list of patients on the html page
-    this.patientId = patientId
+    // Select patient from list of patients on the html page
+    this.patientId = patientId;
+    // Refresh the page to load and display the correct measurements
+    this.loadMeasurements();
+    this.getAverageWeightForMonth(); 
+    this.getAverageWeightForYear();
+    this.getAverageBloodPressureForMonth();
+    this.getAverageBloodPressureForYear();
+    this.getAverageNeuroMeasurementForMonth();
+    this.getAverageNeuroMeasurementForYear();
   }
 
 

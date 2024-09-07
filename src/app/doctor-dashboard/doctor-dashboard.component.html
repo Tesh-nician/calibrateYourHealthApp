@@ -24,18 +24,17 @@
       
       
         <div class="section">
-          <h3>Blood Pressure Measurements</h3>
+          <h3>BCardiological Measurements</h3>
 
-          //add scrolling list of blood pressure measurements with date and a button to delete each one
+          //add scrolling list of cardiological parameters with date and a button to delete each one
           <div id="bloodPressureMeasurementsList">
             <div *ngFor="let bloodPressureMeasurement of bloodPressureMeasurements">
               <p>{{bloodPressureMeasurement.date}} - Systolic: {{bloodPressureMeasurement.systolicPressure}}, Diastolic: {{bloodPressureMeasurement.diastolicPressure}}, Pulse: {{bloodPressureMeasurement.pulse}}  -  Comment: {{bloodPressureMeasurement.bloodPressureComment}}</p>
             </div>
           </div>
         
-          <P> Average Blood Pressure for Month(S/D/P): {{averageBloodPressureForMonth.systolicPressure}}/ {{averageBloodPressureForMonth.diastolicPressure}}/{{averageBloodPressureForMonth.pulse}} </P>
-
-          <div id="bloodPressureChart"></div>
+          <P> Average cardiological values for the latest  Month (S / D / P): {{averageBloodPressureForMonth.systolicPressure}} mmHg  /  {{averageBloodPressureForMonth.diastolicPressure}} mmHg  /{{averageBloodPressureForMonth.pulse}} bpm</P>
+          <P> Average cardiological values for the last year (S / D / P): {{averageBloodPressureForYear.systolicPressure}}  mmHg  /  {{averageBloodPressureForYear.diastolicPressure}} mmHg  / {{averageBloodPressureForYear.pulse}}  bpm         <div id="bloodPressureChart"></div>
 
          
         </div>
@@ -53,24 +52,24 @@
           </div>
 
 
-          <p>Average Weight for Month: {{averageWeightForMonth}}kg</p>
-          <p>Average Weight for Year: {{averageWeightForYear}}kg</p>
+          <p>Average Weight for Month: {{averageWeightForMonth}} kg</p>
+          <p>Average Weight for Year: {{averageWeightForYear}} kg</p>
           
           <div id="weightChart"></div>
           
         </div>
       
         <div class="section">
-          <h3>Neuro Measurements</h3>
+          <h3>Neurological parameters (one-legged balance in seconds):</h3>
           //add scrolling list of neuro measurements with date and a button to delete each one
           <div id="neuroMeasurementsList">
             <div *ngFor="let neuroMeasurement of neuroMeasurements">
-              <p>{{neuroMeasurement.date}} - Neuro Measurement: {{neuroMeasurement.neuroMeasurement}}  -  Comment: {{neuroMeasurement.neuroComment}} </p>
+              <p>{{neuroMeasurement.date}} - Balance duration: {{neuroMeasurement.neuroMeasurement}} seconds -  Comment: {{neuroMeasurement.neuroComment}} </p>
             </div>
           </div>
           
-          <P> Average Neuro Measurement for Month: {{averageNeuroForMonth}}</P>
-          <P> Average Neuro Measurement for Year: {{averageNeuroForYear}}</P>
+          <P> Average Neuro Measurement for Month: {{averageNeuroForMonth}} seconds</P>
+          <P> Average Neuro Measurement for Year: {{averageNeuroForYear}} seconds</P>
 
           <div id="neuroChart"></div>
         

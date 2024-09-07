@@ -43,7 +43,7 @@ export class PatientLoginComponent {
         console.log('Params:', params);
 
  // Make a POST request to the server to login the patient 
- this.http.post<{ message: String, patientId: Number }>('http://localhost:8080/api/patients/login', null, { params })
+ this.http.post<{ message: string, patientId: Number }>('http://localhost:8080/api/patients/login', null, { params })
  .subscribe(
    response => {
 
