@@ -22,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 export class DoctorLoginComponent {
   username: string = '';
   password: string = '';
-  errorMessage: string = '';
+  doctorId: Number | null = null;
+  errorMessage: String = '';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -38,18 +39,28 @@ export class DoctorLoginComponent {
       console.log('Params:', params);
 
  // Make a POST request to the server to login the admin
- this.http.post('http://localhost:8080/api/doctors/login', null, { params, responseType: 'text' })
+ this.http.post<{message:String, doctorId: Number}>('http://localhost:8080/api/doctors/login', null, { params })
  .subscribe(
-   response => {
-     console.log('Login successful', response);
-     this.router.navigate(['/doctor-dashboard']);
-   },
-   error => {
-     console.error('Login failed', error);
-     this.errorMessage = 'Login failed';
-     // Handle the error, display an error message, or redirect to an error page
-   }
- );
-  }
-}
+  response => {
 
+    
+    console.log('Login successful', response.message);
+    
+    //attribute patientId to response
+   this.doctorId = response.doctorId
+   
+   //show patientID in console TODO: remove in production!!!
+   console.log('Doctor ID:', this.doctorId);     
+   
+   //Send patient id to patient dashboard component. VERY IMPORTANT THAT THIS WORKS!!!!
+   this.router.navigate(['/doctor-dashboard'], { queryParams: { doctorId: response.doctorId } });
+    
+  },
+  error => {
+    console.error('Login failed', error);
+    this.errorMessage = 'Login failed';
+    // Handle the error, display an error message, or redirect to an error page
+  }
+);
+ }
+}

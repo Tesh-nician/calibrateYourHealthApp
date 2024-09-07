@@ -24,7 +24,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PatientLoginComponent {
   username: string = '';
   password: string = '';
-  patientId: number | null = null;
+  patientId: Number | null = null;
   errorMessage: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -42,8 +42,8 @@ export class PatientLoginComponent {
   
         console.log('Params:', params);
 
- // Make a POST request to the server to login the admin 
- this.http.post<{ message: string, patientId: number }>('http://localhost:8080/api/patients/login', null, { params})
+ // Make a POST request to the server to login the patient 
+ this.http.post<{ message: String, patientId: Number }>('http://localhost:8080/api/patients/login', null, { params })
  .subscribe(
    response => {
 
