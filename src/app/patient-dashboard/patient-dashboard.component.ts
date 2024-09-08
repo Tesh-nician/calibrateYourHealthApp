@@ -29,7 +29,9 @@ export class PatientDashboardComponent implements OnInit {
 
   modifyDetailsForm = {
     dateOfBirth: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
+
   };
 
   bloodPressureForm = {
@@ -244,6 +246,8 @@ getAverageBloodPressureForMonth() {
       });
   }
 
+
+
   deleteWeightMeasurement(id: number) {
     this.http.delete(`http://localhost:8080/api/patients/weight-measurements/${id}`, { observe: 'response', responseType: 'text' })
       .subscribe({
@@ -303,10 +307,35 @@ getAverageBloodPressureForMonth() {
     this.showModifyDetailsModal = false;
   }
 
-  submitModifyDetails() {
-    // Submit modify details form
-    this.closeModifyDetailsModal();
+
+  
+
+  submitNewPassword() {
+    const newPassword = this.modifyDetailsForm.password;
+    const id = this.patientId;
+  
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  
+    this.http.put(`http://localhost:8080/api/patients/${id}/update-password`, null, {
+      headers,
+      params: new HttpParams().set('password', newPassword),
+      responseType: 'text'
+    }).subscribe(
+      response => {
+        alert('Password updated successfully');
+        console.log('Password updated successfully', response);
+        this.closeModifyDetailsModal();
+      },
+      error => {
+        alert('Error updating password');
+        console.error('Error updating password', error);
+      }
+    );
   }
+    
+
+
+
 
   addBloodPressureMeasurement() {
     this.showAddBloodPressureModal = true;
@@ -378,10 +407,12 @@ getAverageBloodPressureForMonth() {
 
   addNeuroMeasurement() {
     this.showAddNeuroModal = true;
+    this.loadNeuroMeasurements();
   }
 
   closeAddNeuroModal() {
     this.showAddNeuroModal = false;
+   
   }
 
   submitNeuroMeasurement() {
@@ -399,12 +430,13 @@ getAverageBloodPressureForMonth() {
           alert('Neuro measurement added successfully');
           console.log('Neuro measurement added successfully', response);
           this.closeAddNeuroModal();
-          this.loadNeuroMeasurements();
+          
         },
         error => {
           alert('Error adding neuro measurement');
           console.error('Error adding neuro measurement', error);
         }
       );
+      
   }
 }

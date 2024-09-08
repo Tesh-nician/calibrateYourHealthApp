@@ -17,35 +17,41 @@
       
         <div class="section">
           <h3>Admins</h3>
-          <ul>
-            <li *ngFor="let admin of admins">
-              {{ 'ID= '+ admin.id+ ' '+ admin.userName }}
+
+          <div id="adminlist" style="overflow-y: scroll; height: 200px;">
+             <div *ngFor="let admin of admins" >
+              <p> {{ '('+ admin.id+ ') '+ admin.userName }}
               <button (click)="deleteAdmin(admin.id)">Delete</button>
-              <button (click)="resetAdminPassword(admin.id)">Reset Password</button>
-            </li>
-          </ul>
+              <button (click)="resetAdminPassword(admin.id)">Reset Password</button> </p>
+              </div>
+            </div>
+          
         </div>
       
         <div class="section">
           <h3>Doctors</h3>
-          <ul>
-            <li *ngFor="let doctor of doctors">
-              {{ 'ID= '+ doctor.doctorID + ' '+ 'Dr. ' + doctor.firstName + ' ' + doctor.lastName }}
+
+           <div id="doctorlist" style="overflow-y: scroll; height: 200px;">
+            <div *ngFor="let doctor of doctors">
+              <p>{{ '('+ doctor.doctorID + ') '+ 'Dr. ' + doctor.firstName + ' ' + doctor.lastName }}
               <button (click)="deleteDoctor(doctor.doctorID)">Delete</button>
-              <button (click)="resetDoctorPassword(doctor.doctorID)">Reset Password</button>
-            </li>
-          </ul>
+              <button (click)="resetDoctorPassword(doctor.doctorID)">Reset Password</button> </p >
+              </div>
+            </div>
+          
         </div>
       
         <div class="section">
           <h3>Patients</h3>
-          <ul>
-            <li *ngFor="let patient of patients">
-              {{ 'ID= '+ patient.id +  ' '+ patient.firstName + ' ' + patient.lastName }}
+
+          <div id="patientlist" style="overflow-y: scroll; height: 200px;">
+          
+            <div *ngFor="let patient of patients">
+              <p>{{ '('+ patient.id +  ') '+ patient.firstName + ' ' + patient.lastName }}
               <button (click)="deletePatient(patient.id)">Delete</button>
-              <button (click)="resetPatientPassword(patient.id)">Reset Password</button>
-            </li>
-          </ul>
+              <button (click)="resetPatientPassword(patient.id)">Reset Password</button> </p>
+              </div>
+            </div>
         </div>
       </div>
 </body>

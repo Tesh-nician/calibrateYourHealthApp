@@ -13,12 +13,13 @@
 
     <div class="section">
       <h2>List of all Patients</h2>
-      
-      <div *ngFor="let patient of patients">
-        {{ '('+ patient.id + ')  '+ patient.firstName + ' ' + patient.lastName }}
+
+
+       <div *ngFor="let patient of patients">
+        {{ '('+ patient.id + ')  '+ patient.firstName + ' ' + patient.lastName }} 
         <button (click)="viewPatient(patient.id)">Select</button>
         
-      </div>
+       </div>
       
     </div>
     
@@ -59,7 +60,7 @@
     </div>
     
     <div class="section">
-      <h2>Neurological parameters (one-legged balance in seconds):</h2>
+      <h2>Neurological parameters (one-legged balance in seconds)</h2>
       
       
       
@@ -68,10 +69,10 @@
         <p>{{neuroMeasurement.date}} - Balance duration: {{neuroMeasurement.neuroMeasurement}} seconds -  Comment: {{neuroMeasurement.neuroComment}} </p>
       </div>
       </div>
+     
+      <P *ngIf="averageNeuroForMonth !== null"> <strong>Average Neurological result for Month: {{averageNeuroForMonth.toFixed(0)}} seconds</strong></P>
+      <P *ngIf="averageNeuroForYear!== null"> <strong>Average Neurological result for Year: {{averageNeuroForYear.toFixed(0)}} seconds</strong></P>
       
-      <P><strong> Average Neuro Measurement for Month: {{averageNeuroForMonth}} seconds</strong></P>
-      <P> <strong>Average Neuro Measurement for Year: {{averageNeuroForYear}} seconds</strong></P>
-
       <div id="neuroChart"></div>
     
     </div>

@@ -12,16 +12,17 @@
         <button (click)="modifyDetails()">Modify My Details</button>
       
         <div class="section">
-          <h3>Blood Pressure Measurements</h3>
+          <h2>Blood Pressure Measurements</h2>
 
-          //add scrolling list of blood pressure measurements with date and a button to delete each one
-          <div id="bloodPressureMeasurementsList">
-            <div *ngFor="let bloodPressureMeasurement of bloodPressureMeasurements">
+        <div id="bloodPressureMeasurementsList" style="overflow-y: scroll; height: 200px; line-height: 0.5;">
+          <div *ngFor="let bloodPressureMeasurement of bloodPressureMeasurements">
               <p>{{bloodPressureMeasurement.date}} - Systolic: {{bloodPressureMeasurement.systolicPressure}}, Diastolic: {{bloodPressureMeasurement.diastolicPressure}}, Pulse: {{bloodPressureMeasurement.pulse}}  -  Comment: {{bloodPressureMeasurement.bloodPressureComment}}<button (click)="deleteBloodPressureMeasurement(bloodPressureMeasurement.bloodPressureID)">Delete</button></p>
             </div>
           </div>
         
-          <P> Average Blood Pressure for Month(S/D/P): {{averageBloodPressureForMonth.systolicPressure}}/ {{averageBloodPressureForMonth.diastolicPressure}}/{{averageBloodPressureForMonth.pulse}} </P>
+          <P> <strong>Average cardiological values for the latest  Month (S / D / P): {{averageBloodPressureForMonth.systolicPressure}} mmHg  /  {{averageBloodPressureForMonth.diastolicPressure}} mmHg  /{{averageBloodPressureForMonth.pulse}}  bpm</strong></P>
+          <P> <strong>Average cardiological values for the latest  Year (S / D / P): {{averageBloodPressureForYear.systolicPressure}}  mmHg  / {{averageBloodPressureForYear.diastolicPressure}}  mmHg  / {{averageBloodPressureForYear.pulse}}  bpm</strong></P>
+      
 
           <div id="bloodPressureChart"></div>
 
@@ -29,10 +30,9 @@
         </div>
       
         <div class="section">
-          <h3>Weight Measurements</h3>
+          <h2>Weight Measurements </h2>
 
-          //add scrolling list of weight measurements with date and a button to delete each one
-          <div id="weightMeasurementsList">
+              <div id="weightMeasurementsList" style="overflow-y: scroll; height: 200px; line-height: 0.5;">
             
               <div *ngFor="let weightMeasurement of weightMeasurements">
                <p> {{weightMeasurement.date}}: {{weightMeasurement.weight}}kg  - Comment: {{weightMeasurement.weightComment}} id: {{weightMeasurement.weightID}}<button (click)="deleteWeightMeasurement(weightMeasurement.weightID)">Delete</button></p>
@@ -41,24 +41,27 @@
           </div>
 
 
-          <p>Average Weight for Month: {{averageWeightForMonth}}kg</p>
-          <p>Average Weight for Year: {{averageWeightForYear}}kg</p>
+          <p *ngIf="averageWeightForMonth !== null"><strong>Average Weight for Month: {{averageWeightForMonth.toFixed(2)}} kg </strong></p>
+          <p *ngIf="averageWeightForYear !== null"><strong>Average Weight for Year: {{averageWeightForYear.toFixed(2)}} kg </strong></p>
+  
           
           <div id="weightChart"></div>
           <button (click)="addWeightMeasurement()">Add New Weight Measurement</button>
         </div>
       
         <div class="section">
-          <h3>Neuro Measurements</h3>
-          //add scrolling list of neuro measurements with date and a button to delete each one
-          <div id="neuroMeasurementsList">
+          <h2>Neurological parameters (one-legged balance in seconds)</h2>
+
+            <div id="neuroMeasurementsList" style="overflow-y: scroll; height: 200px; line-height:0.5;" >
             <div *ngFor="let neuroMeasurement of neuroMeasurements">
               <p>{{neuroMeasurement.date}} - Neuro Measurement: {{neuroMeasurement.neuroMeasurement}}  -  Comment: {{neuroMeasurement.neuroComment}} <button (click)="deleteNeuroMeasurement(neuroMeasurement.neuroID)">Delete</button></p>
             </div>
           </div>
           
-          <P> Average Neuro Measurement for Month: {{averageNeuroForMonth}}</P>
-          <P> Average Neuro Measurement for Year: {{averageNeuroForYear}}</P>
+        <P *ngIf="averageNeuroForMonth !== null"> <strong>Average Neurological result for Month: {{averageNeuroForMonth.toFixed(0)}} seconds</strong></P>
+        <P *ngIf="averageNeuroForYear!== null"> <strong>Average Neurological result for Year: {{averageNeuroForYear.toFixed(0)}} seconds</strong></P>
+
+
 
           <div id="neuroChart"></div>
           <button (click)="addNeuroMeasurement()">Add New Neuro Measurement</button>
@@ -70,11 +73,11 @@
         <div class="modal-content">
           <span class="close" (click)="closeModifyDetailsModal()">&times;</span>
           <h2>Modify My Details</h2>
-          <form (submit)="submitModifyDetails()">
-            <label for="dateOfBirth">Date of Birth:</label>
-            <input type="date" id="dateOfBirth" [(ngModel)]="modifyDetailsForm.dateOfBirth" name="dateOfBirth" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" [(ngModel)]="modifyDetailsForm.password" name="password" required>
+          <form (submit)="submitNewPassword()">           
+            <label for="newPassword"> New password:</label>
+            <input type="newPassword" id="newPassword" [(ngModel)]="modifyDetailsForm.password" name="newPassword" required>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="confirmPassword" id="confirmPassword" [(ngModel)]="modifyDetailsForm.confirmPassword" name="confirmPassword" required>
             <button type="submit">Submit</button>
           </form>
         </div>
