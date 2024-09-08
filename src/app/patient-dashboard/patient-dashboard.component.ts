@@ -331,6 +331,8 @@ getAverageBloodPressureForMonth() {
         console.error('Error updating password', error);
       }
     );
+
+    this.showModifyDetailsModal=true;
   }
     
 

@@ -38,7 +38,8 @@ DoctorDashboardComponent implements OnInit {
   modifyDetailsForm = {
     
     dateOfBirth: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   };
 
   bloodPressureForm = {
@@ -276,7 +277,24 @@ getAverageBloodPressureForMonth() {
   }
 
   submitModifyDetails() {
-    // Submit modify details form
+    const newPassword = this.modifyDetailsForm.password;
+    const confirmPassword = this.modifyDetailsForm.confirmPassword;
+    const id = this.doctorId;
+
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    this.http.put(`http://localhost:8080/api/doctors/${id}/update-password`,null, {
+      headers,
+      params: new HttpParams().set('password', newPassword),
+      responseType: 'text'
+    }).subscribe(response => {
+      alert('Password updated successfully!');
+      this.closeModifyDetailsModal();
+    }, error => {
+      alert('Error updating password!');
+    });
+
+
     this.closeModifyDetailsModal();
   }
 

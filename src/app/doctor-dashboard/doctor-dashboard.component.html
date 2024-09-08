@@ -84,11 +84,12 @@
       <span class="close" (click)="closeModifyDetailsModal()">&times;</span>
       <h2>Modify My Details</h2>
       <form (submit)="submitModifyDetails()">
-      <label for="dateOfBirth">Date of Birth:</label>
-      <input type="date" id="dateOfBirth" [(ngModel)]="modifyDetailsForm.dateOfBirth" name="dateOfBirth" required>
-      <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="modifyDetailsForm.password" name="password" required>
-      <button type="submit">Submit</button>
+        <label for="newPassword"> New password:</label>
+        <input type="newPassword" id="newPassword" [(ngModel)]="modifyDetailsForm.password" name="newPassword" required>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="confirmPassword" id="confirmPassword" [(ngModel)]="modifyDetailsForm.confirmPassword" name="confirmPassword" required>
+        <button type="submit">Submit</button>
+        <button (click)="closeModifyDetailsModal()">Cancel</button>
       </form>
     </div>
     </div>
