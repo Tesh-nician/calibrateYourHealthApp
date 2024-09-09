@@ -88,7 +88,7 @@ export class PatientDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadMeasurements();
-    this.getAverageWeightForMonth(); // Ensure this method is called
+    this.getAverageWeightForMonth(); 
     this.getAverageWeightForYear();
     this.getAverageBloodPressureForMonth();
     this.getAverageBloodPressureForYear();

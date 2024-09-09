@@ -20,8 +20,8 @@
             </div>
           </div>
         
-          <P> <strong>Average cardiological values for the latest  Month (S / D / P): {{averageBloodPressureForMonth.systolicPressure}} mmHg  /  {{averageBloodPressureForMonth.diastolicPressure}} mmHg  /{{averageBloodPressureForMonth.pulse}}  bpm</strong></P>
-          <P> <strong>Average cardiological values for the latest  Year (S / D / P): {{averageBloodPressureForYear.systolicPressure}}  mmHg  / {{averageBloodPressureForYear.diastolicPressure}}  mmHg  / {{averageBloodPressureForYear.pulse}}  bpm</strong></P>
+          <P> <strong>Average cardiological values for the latest  Month (S / D / P): {{averageBloodPressureForMonth.systolicPressure.toFixed(0)}} mmHg  /  {{averageBloodPressureForMonth.diastolicPressure.toFixed(0)}} mmHg  /{{averageBloodPressureForMonth.pulse.toFixed(0)}}  bpm</strong></P>
+          <P> <strong>Average cardiological values for the latest  Year (S / D / P): {{averageBloodPressureForYear.systolicPressure.toFixed(0)}}  mmHg  / {{averageBloodPressureForYear.diastolicPressure.toFixed(0)}}  mmHg  / {{averageBloodPressureForYear.pulse.toFixed(0)}}  bpm</strong></P>
       
 
           <div id="bloodPressureChart"></div>
